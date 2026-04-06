@@ -1,0 +1,36 @@
+Progression plan                                                                                                                                                                                                        
+                                                                                                                                                                                                                          
+  Phase 1 — Small (30M), Moby Dick        ← you're here (done)                                                                                                                                                            
+            Validate architecture works
+
+  Phase 2 — Medium (50M), Code corpus
+            Java + JS + Python from The Stack
+            Pure next-token prediction on code
+            Validate: does it complete functions?
+
+  Phase 3 — Instruction tune (50M)
+            Fine-tune on (instruction, code) pairs
+            Validate: basic Q&A on code
+
+  Phase 4 — Scale up (128M), larger corpus
+            More data, better generalization
+            Repeat Phase 3 with better base
+
+  ---
+  Why this order makes sense
+
+  - Each phase validates before scaling — no point training 128M if the pipeline has issues
+  - 50M is cheap enough to experiment on MPS, large enough to show meaningful results
+  - Instruction tuning data is small — Phase 3 is fast (~few hours)
+  - By Phase 4 you understand every moving part
+
+  ---
+  What you'll have built end-to-end
+
+  - Custom BPE tokenizer trained on code
+  - GPT architecture from scratch
+  - Pretraining pipeline with cosine LR + checkpointing
+  - Instruction fine-tuning pipeline
+  - A working code assistant (limited but yours)
+
+  That's essentially the full LLM stack. Want to start Phase 2 — data pipeline for the code corpus?
